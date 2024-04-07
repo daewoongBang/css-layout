@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from 'react';
+import { Global } from '@emotion/react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from 'components/common/layout';
+import Flex from 'components/example/flex';
+import Grid from 'components/example/grid';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Global
+        styles={{
+          'html, body, body > div': {
+            margin: 0,
+            width: '100%',
+            height: '100%'
+          }
+        }}
+      />
+
+      <Routes>
+        <Route path={'/*'} element={<Layout />}>
+          <Route path={'flex'} element={<Flex />} />
+          <Route path={'grid'} element={<Grid />} />
+        </Route>
+      </Routes>
+    </Fragment>
   );
 }
 
