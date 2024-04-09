@@ -2,9 +2,17 @@
 
 interface IFlexContentProps {
   direction: any;
+  wrap: any;
+  justifyContent: any;
+  alignItems: any;
 }
 
-const FlexContent = ({ direction }: IFlexContentProps) => {
+const FlexContent = ({
+  direction,
+  wrap,
+  justifyContent,
+  alignItems
+}: IFlexContentProps) => {
   return (
     <div
       css={{
@@ -12,12 +20,13 @@ const FlexContent = ({ direction }: IFlexContentProps) => {
         height: '100%',
         display: 'flex',
         flexDirection: direction || 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: justifyContent || 'normal',
+        alignItems: alignItems || 'normal',
+        flexWrap: wrap || 'nowrap',
 
         '.box': {
-          width: '200px',
-          height: '200px',
+          width: '150px',
+          height: '150px',
           backgroundColor: 'tomato',
           fontSize: '36px',
           color: 'white'
@@ -27,6 +36,8 @@ const FlexContent = ({ direction }: IFlexContentProps) => {
       <div className='box'>1</div>
       <div className='box'>2</div>
       <div className='box'>3</div>
+      <div className='box'>4</div>
+      <div className='box'>5</div>
     </div>
   );
 };

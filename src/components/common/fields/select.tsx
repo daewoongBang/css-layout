@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Label from './label';
 
-interface ISelectOption {
+export interface ISelectOption {
   label: string;
   value: any;
 }

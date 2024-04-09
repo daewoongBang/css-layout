@@ -5,6 +5,9 @@ import Content from './content';
 
 const Flex = () => {
   const [direction, setDirection] = useState<string>('row');
+  const [wrap, setWrap] = useState<string>('nowrap');
+  const [justifyContent, setJustifyContent] = useState<string>('normal');
+  const [alignItems, setAlignItems] = useState<string>('normal');
 
   const getContent = () => {
     const isRow = direction === 'row';
@@ -41,7 +44,12 @@ const Flex = () => {
             {axisInfo[isRow ? 1 : 0].label}
           </div>
 
-          <Content direction={direction} />
+          <Content
+            direction={direction}
+            wrap={wrap}
+            justifyContent={justifyContent}
+            alignItems={alignItems}
+          />
         </div>
       </Fragment>
     );
@@ -59,14 +67,15 @@ const Flex = () => {
           width: '100%',
           height: '100%',
           display: 'inline-flex'
-
-          // 'div:last-child': {
-          //   width: '100%'
-          // }
         }
       }}
     >
-      <Toolbar handleDirection={setDirection} />
+      <Toolbar
+        handleDirection={setDirection}
+        handleWrap={setWrap}
+        handleJustifyContent={setJustifyContent}
+        handleAlignItems={setAlignItems}
+      />
 
       {getContent()}
     </div>
